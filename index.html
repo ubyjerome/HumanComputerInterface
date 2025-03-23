@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Computer Interface Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-tile {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-tile .icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            color: #4a6cf7;
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4a6cf7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        
+        .project-link:hover {
+            background-color: #3a5bd9;
+        }
+        
+        .add-project {
+            border: 2px dashed #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .add-project:hover {
+            border-color: #4a6cf7;
+            background-color: rgba(74, 108, 247, 0.05);
+        }
+        
+        .add-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+        
+        .add-project:hover .add-icon {
+            color: #4a6cf7;
+        }
+        
+        .add-text {
+            font-size: 1.2rem;
+            color: #888;
+        }
+        
+        .add-project:hover .add-text {
+            color: #4a6cf7;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Human Computer Interface</h1>
+            <p class="subtitle">A collection of interactive web projects exploring different aspects of human-computer interaction</p>
+            <p class="subtitle">Illustrated by Ubongabasi Jerome</p>
+        </header>
+        
+        <div class="projects-grid">
+            <!-- Theme Changer Project -->
+            <div class="project-tile">
+                <div class="icon">
+                    <span>🎨</span>
+                </div>
+                <div class="project-content">
+                    <h2 class="project-title">Date Theme Changer</h2>
+                    <p class="project-description">
+                        A webpage that automatically changes its theme based on special dates like Valentine's Day, Christmas, and more.
+                    </p>
+                    <a href="theme-changer.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Number Inputs Project -->
+            <div class="project-tile">
+                <div class="icon">
+                    <span>🔢</span>
+                </div>
+                <div class="project-content">
+                    <h2 class="project-title">Number Input Validation</h2>
+                    <p class="project-description">
+                        Two different approaches to validating number inputs - one that clears all on invalid input and another that only removes invalid characters.
+                    </p>
+                    <a href="number-inputs.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <footer>
+            <p>CSC381: HCI, Department of Computer Science, Akwa Ibom State University &copy; <span id="current-year"></span></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

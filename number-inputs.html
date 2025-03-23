@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Input Validation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .input-group {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .input-group h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .input-group p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        
+        .input-status {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            min-height: 20px;
+        }
+        
+        .valid {
+            color: #27ae60;
+        }
+        
+        .invalid {
+            color: #e74c3c;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .nav-link:hover {
+            background-color: #555;
+        }
+        
+        .links-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Input Validation</h1>
+        <p>This page demonstrates two different approaches to validating number inputs.</p>
+        
+        <div class="input-group">
+            <h2>Input 1: Clear All on Invalid Input</h2>
+            <p>This input will clear all characters if any non-numeric character is entered.</p>
+            <label for="input1">Enter numbers only:</label>
+            <input type="text" id="input1" placeholder="Enter numbers only">
+            <div id="status1" class="input-status"></div>
+        </div>
+        
+        <div class="input-group">
+            <h2>Input 2: Clear Only Invalid Characters</h2>
+            <p>This input will only remove non-numeric characters, keeping the valid numbers.</p>
+            <label for="input2">Enter numbers only:</label>
+            <input type="text" id="input2" placeholder="Enter numbers only">
+            <div id="status2" class="input-status"></div>
+        </div>
+        
+        <div class="links-container">
+            <a href="/" class="nav-link">Go to Home</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Input 1: Clear all characters if any invalid character is entered
+            const input1 = document.getElementById('input1');
+            const status1 = document.getElementById('status1');
+            
+            input1.addEventListener('input', function() {
+                const value = this.value;
+                
+                // Check if the input contains only numbers
+                if (/^\d*$/.test(value)) {
+                    status1.textContent = value ? 'Valid input!' : '';
+                    status1.className = 'input-status valid';
+                } else {
+                    // If invalid character detected, clear the entire input
+                    this.value = '';
+                    status1.textContent = 'Invalid character detected! Input cleared.';
+                    status1.className = 'input-status invalid';
+                }
+            });
+            
+            // Input 2: Clear only invalid characters, keeping valid numbers
+            const input2 = document.getElementById('input2');
+            const status2 = document.getElementById('status2');
+            
+            input2.addEventListener('input', function(e) {
+                const value = this.value;
+                const originalLength = value.length;
+                
+                // Remove all non-numeric characters
+                const cleanedValue = value.replace(/\D/g, '');
+                
+                // If there were non-numeric characters, update the input
+                if (cleanedValue !== value) {
+                    this.value = cleanedValue;
+                    status2.textContent = 'Invalid characters removed!';
+                    status2.className = 'input-status invalid';
+                    
+                    // Position cursor correctly after removing characters
+                    const cursorPosition = e.target.selectionStart;
+                    const diff = originalLength - cleanedValue.length;
+                    setTimeout(() => {
+                        this.setSelectionRange(cursorPosition - diff, cursorPosition - diff);
+                    }, 0);
+                } else {
+                    status2.textContent = value ? 'Valid input!' : '';
+                    status2.className = 'input-status valid';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
