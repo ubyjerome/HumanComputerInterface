@@ -184,12 +184,6 @@
                     status2.textContent = 'Invalid characters removed!';
                     status2.className = 'input-status invalid';
                     
-                    // Position cursor correctly after removing characters
-                    const cursorPosition = e.target.selectionStart;
-                    const diff = originalLength - cleanedValue.length;
-                    setTimeout(() => {
-                        this.setSelectionRange(cursorPosition - diff, cursorPosition - diff);
-                    }, 0);
                 } else {
                     status2.textContent = value ? 'Valid input!' : '';
                     status2.className = 'input-status valid';

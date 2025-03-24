@@ -207,7 +207,7 @@
                 <option value="christmas">Christmas (Dec 25)</option>
                 <option value="halloween">Halloween (Oct 31)</option>
                 <option value="newyear">New Year (Jan 1)</option>
-                <option value="independence">Independence Day (Jul 4)</option>
+                <option value="independence">Independence Day (Oct 1)</option>
             </select>
         </div>
 
@@ -231,7 +231,7 @@
 
         // Function to check if today is a special date and apply theme
         function checkDateAndApplyTheme(date) {
-            const month = date.getMonth() + 1; // getMonth() is zero-based
+            const month = date.getMonth() + 1;
             const day = date.getDate();
 
             let theme = 'default';
@@ -258,7 +258,7 @@
                 themeName = 'New Year';
             }
             // Independence Day - July 4
-            else if (month === 7 && day === 4) {
+            else if (month === 10 && day === 1) {
                 theme = 'independence';
                 themeName = 'Independence Day';
             }
@@ -286,6 +286,7 @@
             // Add event listener for theme selector
             document.getElementById('date-select').addEventListener('change', function () {
                 const selectedTheme = this.value;
+                
                 document.body.className = selectedTheme;
 
                 let themeName = 'Default';
